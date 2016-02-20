@@ -20,23 +20,23 @@ class ApiController extends Controller
 
     public function create(Request $request)
     {
-//        $inputs = $request->all();
-//        $rules = [
-//            'title'=>'required',
-//            'description'=>'required',
-//        ];
-//
-//        $messages = [
-//            'title.required'=>'名前は必須です。',
-//            'description.required'=>'emailは必須です。',
-//        ];
-//
-//        $validation = \Validator::make($inputs,$rules,$messages);
-//
-//        if($validation->fails())
-//        {
-//            return response()->json([ 'error' => 400, 'message' => 'BadRequest' ], 400);
-//        }
+        $inputs = $request->all();
+        $rules = [
+            'title'=>'required',
+            'description'=>'required',
+        ];
+
+        $messages = [
+            'title.required'=>'名前は必須です。',
+            'description.required'=>'emailは必須です。',
+        ];
+
+        $validation = \Validator::make($inputs,$rules,$messages);
+
+        if($validation->fails())
+        {
+            return response()->json([ 'error' => 400, 'message' => 'BadRequest' ], 400);
+        }
 
         $project = Project::create();
         if (!$request->title || !$request->description){

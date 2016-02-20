@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('projects', 'ApiController@index');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes

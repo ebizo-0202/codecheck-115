@@ -12,10 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "hello";
 });
 
-Route::get('projects', 'ApiController@index');
+Route::get('api/projects','ApiController@index');
+Route::post('api/projects','ApiController@create');
+Route::get('api/projects/{id}','ApiController@detail');
+Route::post('api/projects/{id}','ApiController@delete');
 
 /*
 |--------------------------------------------------------------------------

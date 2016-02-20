@@ -19,8 +19,10 @@ class ApiController extends Controller
 
         $response["status"] = "OK";
         $response["message"] = "No problem";
+        $response["results"] = $projects;
+        echo('作品一覧');
 
-   //     return Response::json($response);
-        return view('users.index')->with('users', $users);
+        return Response::json($response);
+     //   return view('users.index')->with('users', $users);
     }
 }

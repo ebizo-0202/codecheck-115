@@ -15,30 +15,33 @@ class ApiController extends Controller
     {
         $projects = Project::all();
 
-        return response()->json([ 'status' => 200, 'message' => 'OK', 'results' => $projects ], 200);
+        return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
     }
 
     public function create(Request $request)
     {
-        $inputs = $request->all();
-        $rules = [
-            'title'=>'required',
-            'description'=>'required',
-        ];
-
-        $messages = [
-            'title.required'=>'名前は必須です。',
-            'description.required'=>'emailは必須です。',
-        ];
-
-        $validation = \Validator::make($inputs,$rules,$messages);
-
-        if($validation->fails())
-        {
-            return response()->json([ 'error' => 400, 'message' => 'BadRequest' ], 400);
-        }
+//        $inputs = $request->all();
+//        $rules = [
+//            'title'=>'required',
+//            'description'=>'required',
+//        ];
+//
+//        $messages = [
+//            'title.required'=>'名前は必須です。',
+//            'description.required'=>'emailは必須です。',
+//        ];
+//
+//        $validation = \Validator::make($inputs,$rules,$messages);
+//
+//        if($validation->fails())
+//        {
+//            return response()->json([ 'error' => 400, 'message' => 'BadRequest' ], 400);
+//        }
 
         $project = Project::create();
+        if (!$request->title || !$request->description){
+            return response()->json([ 'error' => 400, 'message' => 'BadRequest' ], 400);
+        }
         $project->title = $request->title;
         $project->description = $request->description;
         $project->save();
@@ -55,7 +58,7 @@ class ApiController extends Controller
             return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
         }
 
-        return response()->json([ 'status' => 200, 'message' => 'OK', 'results' => $project ], 200);
+        return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
     }
  
     public function delete($id)

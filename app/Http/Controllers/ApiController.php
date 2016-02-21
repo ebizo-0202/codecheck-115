@@ -15,7 +15,8 @@ class ApiController extends Controller
     {
         $projects = Project::all();
 
-        return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
+        return response()->json([ 'status' => 200, 'message' => 'OK', 'results' => $projects], 200);
+       // return response()->json(200);
     }
 
     public function create(Request $request)
@@ -46,7 +47,7 @@ class ApiController extends Controller
         $project->description = $request->description;
         $project->save();
 
-        return response()->json([ 'status' => 200, 'message' => 'OK' ], 200);
+        return response()->json(200);
     }
     
     public function detail($id)
@@ -58,7 +59,7 @@ class ApiController extends Controller
             return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
         }
 
-        return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
+        return response()->json([ 'status' => 200, 'message' => 'OK', 'results' => $project], 200);
     }
  
     public function delete($id)

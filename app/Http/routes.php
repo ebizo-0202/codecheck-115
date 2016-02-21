@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get('api/projects','ApiController@index');
 Route::post('api/projects','ApiController@create');
 Route::get('api/projects/{id}','ApiController@detail');
-Route::post('api/projects/{id}','ApiController@delete');
+Route::delete('api/projects/{id}','ApiController@delete');
 
 /*
 |--------------------------------------------------------------------------

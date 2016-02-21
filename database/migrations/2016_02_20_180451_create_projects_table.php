@@ -18,6 +18,7 @@ class CreateProjectsTable extends Migration
             $table->string('title', 255);
             $table->text('description');
             $table->timestamp('created_at')->useCurrent(); 
+            $table->timestamp('updated_at')->useCurrent(); 
         });
     }
 

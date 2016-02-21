@@ -27,7 +27,7 @@ class AddUpdatedAtToProjectsTable extends Migration
     public function down()
     {
         Schema::table('projects', function (Blueprint $table) {
-            //$table->timestamp('updated_at');
+            $table->timestamp('updated_at');
             //
         });
     }

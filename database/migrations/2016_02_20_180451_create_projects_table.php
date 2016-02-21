@@ -17,7 +17,7 @@ class CreateProjectsTable extends Migration
             $table->string('url', 255)->nullable();
             $table->string('title', 255);
             $table->text('description');
-            $table->timestamp('created_at'); 
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP')); 
         });
     }
 

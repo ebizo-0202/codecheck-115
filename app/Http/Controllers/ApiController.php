@@ -13,9 +13,10 @@ class ApiController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
+        $projects = new Project;
+        $allProjects = $projects->all();
 
-        return response()->json([ 'status' => 200, 'message' => 'OK', 'results' => $projects], 200);
+        return response()->json([ 'status' => 200, 'message' => 'OK', 'results' => $allProjects], 200);
        // return response()->json(200);
     }
 
@@ -71,6 +72,7 @@ class ApiController extends Controller
         }
         $project->delete();
 
-        return response()->json([ 'status' => 200, 'message' => 'OK' ], 200);
+        //return response()->json([ 'status' => 200, 'message' => 'OK' ], 200);
+        return response()->json(200);
     }
 }

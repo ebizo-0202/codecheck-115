@@ -66,7 +66,7 @@ class ApiController extends Controller
             return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
         }
 
-        return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
+        return response()->json([ 'status' => 200, 'message' => 'OK', 'result' => $detail], 200);
     }
  
     public function delete($id)

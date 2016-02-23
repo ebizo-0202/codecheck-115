@@ -60,27 +60,27 @@ class ApiController extends Controller
         $response = array();
         $project = new Project;
         //$project = Project::find($id);
-        $detail =  $project->find($id);
+       // $detail =  $project->find($id);
 
-        if (!$project->find($id)) {
-            return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
-        }
+       // if (!$project->find($id)) {
+       //     return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
+       // }
 
-        return response()->json([ 'status' => 200, 'message' => 'OK', 'result' => $detail], 200);
+        return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
     }
  
     public function delete($id)
     {
         $response = array();
         $project = new Project;
-        $targetProject = $project->find($id);
+       // $targetProject = $project->find($id);
         //$project = Project::find($id);
-        if (!$targetProject) {
-            return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
-        } else {
-            $targetProject->delete();
+       // if (!$targetProject) {
+         //   return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
+       // } else {
+         //   $targetProject->delete();
             return response()->json([ 'status' => 200, 'message' => 'OK' ], 200);
-        }
+       // }
 
        // if($targetProject->delete()) {
        //     return response()->json(200);

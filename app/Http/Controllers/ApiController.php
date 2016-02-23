@@ -48,6 +48,7 @@ class ApiController extends Controller
         if (!$request->title || !$request->description){
             return response()->json([ 'error' => 400, 'message' => 'BadRequest' ], 400);
         }
+        $project->id = $request->id;
         $project->title = $request->title;
         $project->description = $request->description;
         $project->save();
@@ -73,13 +74,13 @@ class ApiController extends Controller
     {
         $response = array();
         $project = new Project;
-        $targetProject = $project->findOrFail($id);
+       // $targetProject = $project->findOrFail($id);
         //$project = Project::find($id);
-       // if (!$targetProject) {
-         //   return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
-       // } else {
+        if ($project->find($id)) {
+            return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
+        }// else {
          //   $targetProject->delete();
-            return response()->json([ 'status' => 200, 'message' => 'OK' ], 200);
+            return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
        // }
 
        // if($targetProject->delete()) {

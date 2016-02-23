@@ -13,7 +13,7 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->increments('id')->integer();
+            $table->integer('id');
             $table->string('url', 255)->nullable();
             $table->string('title', 255);
             $table->text('description');

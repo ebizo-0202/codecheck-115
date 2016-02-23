@@ -60,7 +60,7 @@ class ApiController extends Controller
         $response = array();
         $project = new Project;
         //$project = Project::find($id);
-       // $detail =  $project->find($id);
+        $detail =  $project->findOrFail($id);
 
        // if (!$project->find($id)) {
        //     return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
@@ -73,7 +73,7 @@ class ApiController extends Controller
     {
         $response = array();
         $project = new Project;
-       // $targetProject = $project->find($id);
+        $targetProject = $project->findOrFail($id);
         //$project = Project::find($id);
        // if (!$targetProject) {
          //   return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);

@@ -52,7 +52,7 @@ class ApiController extends Controller
         $project->description = $request->description;
         $project->save();
 
-        return response()->json([ 'error' => 200, 'message' => 'OK' ], 200);
+        return response()->json([ 'status' => 200, 'message' => 'OK' ], 200);
     }
     
     public function detail($id)
@@ -66,7 +66,7 @@ class ApiController extends Controller
             return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
         }
 
-       // return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
+        return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
     }
  
     public function delete($id)
@@ -77,11 +77,14 @@ class ApiController extends Controller
         //$project = Project::find($id);
         if (!$targetProject) {
             return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
+        } else {
+            $targetProject->delete();
+            return response()->json([ 'status' => 200, 'message' => 'OK' ], 200);
         }
 
-        if($targetProject->delete()) {
-           // return response()->json(200);
-        }
+       // if($targetProject->delete()) {
+       //     return response()->json(200);
+       // }
 
         //return response()->json([ 'status' => 200, 'message' => 'OK' ], 200);
     }

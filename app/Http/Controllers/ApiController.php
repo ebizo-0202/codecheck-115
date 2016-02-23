@@ -14,12 +14,12 @@ class ApiController extends Controller
     public function index()
     {
         $projects = new Project;
-        $allProjects = $projects->all();
+      //  $allProjects = $projects->all();
 
-        if(!$allProjects) {
-            return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
-        }
-        return response()->json([ 'status' => 200, 'message' => 'OK', 'results' => $allProjects], 200);
+       // if(!$allProjects) {
+       //     return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
+       // }
+        return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
        // return response()->json(200);
     }
 

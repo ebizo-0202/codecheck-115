@@ -19,7 +19,7 @@ class ApiController extends Controller
        // if(!$allProjects) {
        //     return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
        // }
-        return response()->json([ 'status' => 200, 'message' => 'OK']);
+        return response()->json([ 'status' => 400, 'message' => 'OK']);
        // return response()->json(200);
     }
 

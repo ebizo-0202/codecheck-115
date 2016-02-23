@@ -52,6 +52,7 @@ describe("DELETE /api/projects/:id", function () {
   });
 
   it("should succeed if exsits", function (done) {
+    this.timeout(5000);
     host.api(API).params({
       id: project.id
     }).success(done);

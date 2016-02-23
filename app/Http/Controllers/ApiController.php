@@ -14,13 +14,13 @@ class ApiController extends Controller
     public function index()
     {
         $projects = new Project;
-      //  $allProjects = $projects->all();
+        $allProjects = $projects->all();
 
-       // if(!$allProjects) {
-       //     return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
-       // }
+        if(!$allProjects) {
+            return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
+        }
+
         return response()->json([ 'status' => 400, 'message' => 'OK']);
-       // return response()->json(200);
     }
 
     public function create(Request $request)
@@ -60,12 +60,7 @@ class ApiController extends Controller
     {
         $response = array();
         $project = new Project;
-        //$project = Project::find($id);
         $detail =  $project->findOrFail($id);
-
-       // if (!$project->find($id)) {
-       //     return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
-       // }
 
         return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
     }
@@ -74,19 +69,15 @@ class ApiController extends Controller
     {
         $response = array();
         $project = new Project;
-       // $targetProject = $project->findOrFail($id);
-        //$project = Project::find($id);
-        if ($project->find($id)) {
-            return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
-        }// else {
-         //   $targetProject->delete();
-            return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
+        $targetProject = $project->findOrFail($id);
+        $targetProject->delete();
+//        if ($project->find($id)) {
+//            return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
+//        }// else {
+//         //   $targetProject->delete();
+//            return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
        // }
 
-       // if($targetProject->delete()) {
-       //     return response()->json(200);
-       // }
 
-        //return response()->json([ 'status' => 200, 'message' => 'OK' ], 200);
     }
 }

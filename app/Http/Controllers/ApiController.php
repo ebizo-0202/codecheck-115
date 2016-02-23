@@ -71,6 +71,7 @@ class ApiController extends Controller
         $project = new Project;
         $targetProject = $project->findOrFail($id);
         $targetProject->delete();
+        return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
 //        if ($project->find($id)) {
 //            return response()->json([ 'status' => 200, 'message' => 'OK'], 200);
 //        }// else {

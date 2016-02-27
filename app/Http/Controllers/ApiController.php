@@ -20,7 +20,7 @@ class ApiController extends Controller
             return response()->json([ 'error' => 404, 'message' => 'NotFound' ], 404);
         }
 
-        return response()->json([ 'status' => 400, 'message' => 'OK']);
+        return response()->json([ 'status' => 400, 'message' => 'OK', 'results' => $allProjects]);
     }
 
     public function create(Request $request)

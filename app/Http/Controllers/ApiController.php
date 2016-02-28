@@ -43,11 +43,14 @@ class ApiController extends Controller
             return response()->json([ 'error' => 400, 'message' => 'BadRequest' ], 400);
         }
 
-        $project = Project::create();
-        if (!$request->title || !$request->description){
-            return response()->json([ 'error' => 400, 'message' => 'BadRequest' ], 400);
-        }
-        $project->id = $request->id;
+        //$project = Project::create();
+        $project = new Project;
+//        if (!$request->title || !$request->description){
+//            return response()->json([ 'error' => 400, 'message' => 'BadRequest' ], 400);
+ //       }
+        if ($request->id) {
+            $project->id = $request->id;
+        } 
         $project->title = $request->title;
         $project->description = $request->description;
         $project->save();
